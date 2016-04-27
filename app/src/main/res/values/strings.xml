@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Gank.io</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="recommend">每日推荐</string>
+    <string name="type">分类</string>
+    <string name="girl">妹子</string>
+    <string name="action_refresh">刷新</string>
+    <string name="action_copy_url">复制链接</string>
+    <string name="action_open_url">在浏览器中打开</string>
+    <string name="action_share">分享</string>
+    <string name="tip_copy_done">复制成功</string>
+    <string name="tip_open_error">没有找到可以打开此链接的应用</string>
+    <string name="progress">进度条</string>
+</resources>
