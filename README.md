@@ -1,4 +1,4 @@
-这是一个用[gank.io](http://gank.io)api写的app
+这是一个用[gank.io](http://gank.io) api写的app
 
 # 这个用到的新知识
 - [RxJava](http://gank.io/post/560e15be2dca930e00da1083)
