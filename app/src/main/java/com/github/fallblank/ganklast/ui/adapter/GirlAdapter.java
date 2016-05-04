@@ -1,7 +1,7 @@
 package com.github.fallblank.ganklast.ui.adapter;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import com.github.fallblank.ganklast.R;
 import com.github.fallblank.ganklast.data.entity.Gank;
 import com.github.fallblank.ganklast.ui.activity.BaseActivity;
-import com.github.fallblank.ganklast.ui.fragment.ImageFrament;
+import com.github.fallblank.ganklast.ui.activity.ImagePagerActivity;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -39,7 +39,7 @@ public class GirlAdapter extends RecyclerView.Adapter<GirlAdapter.GirlViewHolder
 
     @Override
     public void onBindViewHolder(GirlViewHolder holder, int position) {
-        holder.bindData(mGirls.get(position));
+        holder.bindData(position);
     }
 
     @Override
@@ -56,15 +56,17 @@ public class GirlAdapter extends RecyclerView.Adapter<GirlAdapter.GirlViewHolder
             mIvGirl = (ImageView) itemView.findViewById(R.id.image);
         }
 
-        public void bindData(final Gank gank) {
+        public void bindData(final int position) {
             mIvGirl.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ImageFrament frament = ImageFrament.newInstance(gank.url);
-                    frament.show(mActivity.getSupportFragmentManager(), "IMAGE");
+                    Intent i = new Intent(mActivity, ImagePagerActivity.class);
+                    i.putExtra(ImagePagerActivity.EXTRA_IMAGE_LISE, mGirls);
+                    i.putExtra(ImagePagerActivity.EXTRA_POSITION, position);
+                    mActivity.startActivity(i);
                 }
             });
-
+            Gank gank = mGirls.get(position);
             Picasso.with(mActivity)
                     .load(gank.url)
                     .into(mIvGirl, new Callback() {

@@ -51,7 +51,7 @@ public class DailyPagerFragment extends Fragment {
 
         //remain to do:there should recover the state
 
-        View view = inflater.inflate(R.layout.fragment_daily_pager, container, false);
+        View view = inflater.inflate(R.layout.activity_image_pager, container, false);
         mPager = (ViewPager) view.findViewById(R.id.viewpager);
         ArrayList<String> history = getArguments().getStringArrayList(ARG_HISTORY);
         mAdapter = new DialyPagerAdapter(getFragmentManager(), history);

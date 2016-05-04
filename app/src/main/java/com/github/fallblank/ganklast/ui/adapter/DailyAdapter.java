@@ -1,7 +1,6 @@
 package com.github.fallblank.ganklast.ui.adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,12 +15,11 @@ import com.github.fallblank.ganklast.R;
 import com.github.fallblank.ganklast.data.entity.Gank;
 import com.github.fallblank.ganklast.ui.activity.BaseActivity;
 import com.github.fallblank.ganklast.ui.activity.WebActivity;
-import com.github.fallblank.ganklast.ui.fragment.ImageFrament;
+import com.github.fallblank.ganklast.ui.fragment.ImageDialogFrament;
 import com.github.fallblank.ganklast.util.StringStyleUtils;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -118,7 +116,8 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.BaseViewHold
             imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ImageFrament frament = ImageFrament.newInstance(gank.url);
+                    ImageDialogFrament frament = ImageDialogFrament.newInstance(gank.url);
+                    frament.setStyle(android.support.v4.app.DialogFragment.STYLE_NORMAL, R.style.Dialog_Fullscreen);
                     frament.show(mActivity.getSupportFragmentManager(), "IMAGE");
                 }
             });

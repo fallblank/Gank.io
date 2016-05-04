@@ -1,5 +1,6 @@
 package com.github.fallblank.ganklast.data.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import retrofit.http.PUT;
@@ -20,7 +21,7 @@ import retrofit.http.PUT;
  * "who": "mthli"
  * }
  */
-public class Gank implements Cloneable {
+public class Gank implements Cloneable ,Serializable{
     public String _id;
     public Date createdAt;
     public String desc;

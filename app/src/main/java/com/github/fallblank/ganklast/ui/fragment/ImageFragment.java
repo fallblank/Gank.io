@@ -3,41 +3,43 @@ package com.github.fallblank.ganklast.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.fallblank.ganklast.R;
-import com.github.fallblank.ganklast.data.entity.Gank;
-import com.squareup.okhttp.OkHttpClient;
+import com.github.fallblank.ganklast.data.History;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 /**
- * Created by fallb on 2016/4/27.
+ * Created by fallb on 2016/5/4.
  */
-public class ImageFrament extends DialogFragment {
-    private final static String TAG_URL = "url";
+public class ImageFragment extends Fragment {
 
-    public static ImageFrament newInstance(String url) {
+    private final static String ARG_URL = "url";
+    private final static String ARG_HINT = "hint";
+
+    public static ImageFragment newInstance(String url, String hint) {
         Bundle bundle = new Bundle();
-        bundle.putString(TAG_URL, url);
-        ImageFrament frament = new ImageFrament();
+        bundle.putString(ARG_URL, url);
+        bundle.putString(ARG_HINT, hint);
+        ImageFragment frament = new ImageFragment();
         frament.setArguments(bundle);
         return frament;
     }
+
 
     @Override
     public void onStart() {
         super.onStart();
         Picasso.with(getContext())
-                .load(getArguments().getString(TAG_URL))
+                .load(getArguments().getString(ARG_URL))
                 .into(mImageView, new Callback() {
                     @Override
                     public void onSuccess() {
@@ -54,6 +56,7 @@ public class ImageFrament extends DialogFragment {
     private ImageView mImageView;
     private ProgressBar mProgressBar;
     private FloatingActionButton mFabSave;
+    private TextView mTvHint;
 
     @Nullable
     @Override
@@ -68,6 +71,9 @@ public class ImageFrament extends DialogFragment {
                 Toast.makeText(getContext(), "还没实现", Toast.LENGTH_SHORT).show();
             }
         });
+        mTvHint = (TextView) view.findViewById(R.id.hint);
+        final String hint = getArguments().getString(ARG_HINT);
+        mTvHint.setText(hint);
         return view;
     }
 }
