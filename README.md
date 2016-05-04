@@ -1,4 +1,4 @@
-这是一个用[gank.io](http://gank.io)api写的app
+这是一个用[gank.io](http://gank.io) api写的app
 
 # 这个用到的新知识
 - [RxJava](http://gank.io/post/560e15be2dca930e00da1083)
@@ -25,7 +25,10 @@
 4. 第三方登录进行收藏等操作没实现，这需要在我的服务器上写一个Python用户管理系统，但现在不想写python...
 5. 界面没动画，看起来死板。
 6. 其他很多
+<<<<<<< HEAD
 
 # update -01 2016-05-04
 - 优化图片查看，实现类似知乎的图片查看效果, [实现思路](http://www.cnblogs.com/fallblank/p/5459336.html)</br>
 ![](https://github.com/fallblank/Gank.io/blob/master/ScreenShots/5.png)
+=======
+>>>>>>> 74e20e9a07a6f102dd636bf66e8fc5e26af538d6
