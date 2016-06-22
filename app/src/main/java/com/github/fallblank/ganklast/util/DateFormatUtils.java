@@ -10,7 +10,12 @@ public class DateFormatUtils {
     private static final String format = "yyyy-MM-dd";
 
     public static String getFormatDateString(Date date) {
-        SimpleDateFormat forater = new SimpleDateFormat(format);
-        return forater.format(date);
+        SimpleDateFormat formater = new SimpleDateFormat(format);
+        return formater.format(date);
+    }
+
+    public static String getTimestamp(){
+        SimpleDateFormat formater = new SimpleDateFormat("yyyy-MM-dd HH:mm ss");
+        return formater.format(new Date());
     }
 }

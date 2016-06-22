@@ -1,6 +1,7 @@
 package com.github.fallblank.ganklast.ui.fragment;
 
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -14,8 +15,12 @@ import android.widget.Toast;
 
 import com.github.fallblank.ganklast.R;
 import com.github.fallblank.ganklast.data.History;
+import com.github.fallblank.ganklast.util.DateFormatUtils;
+import com.github.fallblank.ganklast.util.Downloader;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by fallb on 2016/5/4.
@@ -48,6 +53,7 @@ public class ImageFragment extends Fragment {
 
                     @Override
                     public void onError() {
+                        mProgressBar.setVisibility(View.GONE);
                         mImageView.setImageResource(R.drawable.error);
                     }
                 });
@@ -68,7 +74,18 @@ public class ImageFragment extends Fragment {
         mFabSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "还没实现", Toast.LENGTH_SHORT).show();
+                File root = Environment.getExternalStorageDirectory();
+                File file = new File(root, "/GankIo/Image/"+DateFormatUtils.getTimestamp()+".jpg");
+                if (!file.getParentFile().exists()) file.getParentFile().mkdirs();
+                if (!file.exists()){
+                    try {
+                        file.createNewFile();
+                    } catch (IOException e) {
+                        Toast.makeText(getContext(), R.string.download_failed, Toast.LENGTH_SHORT);
+                        return;
+                    }
+                }
+                Downloader.download(getContext(),getArguments().getString(ARG_URL),file);
             }
         });
         mTvHint = (TextView) view.findViewById(R.id.hint);

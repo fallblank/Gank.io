@@ -69,6 +69,7 @@ public class DailyFragment extends Fragment implements FB_Daily {
         presenter.getDailyData(date);
     }
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

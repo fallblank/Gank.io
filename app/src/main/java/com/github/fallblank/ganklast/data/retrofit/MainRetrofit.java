@@ -27,7 +27,7 @@ public class MainRetrofit {
                 .setClient(new OkClient(client))
                 .setEndpoint(HOST)
                 .setConverter(new GsonConverter(mGson))
-                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setLogLevel(RestAdapter.LogLevel.NONE)
                 .build();
         mService = restAdapter.create(GankData.class);
     }

@@ -34,3 +34,6 @@
 	<img style="margin: 5px" src="https://github.com/fallblank/Gank.io/blob/master/ScreenShots/5.png" width="281" height="500">
 </p>
 
+# update -02 -2016-05-22
+- 修复图片下载功能
+
